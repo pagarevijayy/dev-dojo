@@ -9,10 +9,10 @@ const Header = () => {
     };
 
     return (
-        <header className="flex justify-between">
+        <header className="flex justify-between mb-2">
             <h1>{page.pageName}</h1>
             <nav>
-                <ul className="flex gap-2">
+                <ul className="flex gap-4">
                     <li>
                         <NavLink to={"/"} className={highlightNavLink}>
                             Home
@@ -21,6 +21,14 @@ const Header = () => {
                     <li>
                         <NavLink to={"/about"} className={highlightNavLink}>
                             About
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to={"/react-query"}
+                            className={highlightNavLink}
+                        >
+                            Query
                         </NavLink>
                     </li>
                 </ul>

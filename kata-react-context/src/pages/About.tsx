@@ -10,7 +10,7 @@ const About = () => {
 
     return (
         <div className="my-6">
-            <p className="text-xs font-medium">
+            <p className="">
                 About - Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Velit iure aspernatur laudantium? Maiores, labore accusantium.
                 Officiis molestias repudiandae ipsa modi illo, recusandae

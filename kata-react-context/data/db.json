@@ -1,0 +1,46 @@
+{
+    "posts": [
+        { "id": "1", "title": "Juliet Classes", "views": 100, "userId": "1" },
+        { "id": "2", "title": "James' Adventures", "views": 200, "userId": "3" }
+    ],
+    "comments": [
+        {
+            "id": "1",
+            "text": "a comment about post 1",
+            "postId": "1",
+            "userId": "2"
+        },
+        {
+            "id": "2",
+            "text": "another comment about post 1",
+            "postId": "1",
+            "userId": "4"
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "Juliet Oma",
+            "email": "julie@yahoo.com",
+            "number": "08100000000"
+        },
+        {
+            "id": 2,
+            "name": "James Williams",
+            "email": "jameswilly@gmail.com",
+            "number": "08111111111"
+        },
+        {
+            "id": 3,
+            "name": "Ahmed Ali",
+            "email": "ahmedali012@gmail.com",
+            "number": "09022222222"
+        },
+        {
+            "id": 4,
+            "name": "Grace Funsho",
+            "email": "gracefunsho@gmail.com",
+            "number": "09033333333"
+        }
+    ]
+}

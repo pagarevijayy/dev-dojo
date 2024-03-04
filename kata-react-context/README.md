@@ -21,3 +21,4 @@
 -   [ ] forms, timers
 -   [ ] error boundaries
 -   [ ] higher-order-components
+-   [ ] api call - abort, multiple at once, paginate, etc.
