@@ -22,3 +22,5 @@
 -   [ ] error boundaries
 -   [ ] higher-order-components
 -   [ ] api call - abort, multiple at once, paginate, etc.
+-   [ ] update metadata (title) based on current page.
+-   [ ] env variable and base urls.

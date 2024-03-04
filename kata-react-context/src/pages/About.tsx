@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { usePageContext } from "../contexts/PageContext";
 
 const About = () => {
+    // This logic of updating context is abstracted in useSetPageTitle. Following code is for sample purpose.
     const page = usePageContext();
 
     useEffect(() => {

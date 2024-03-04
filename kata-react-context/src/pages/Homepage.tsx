@@ -1,12 +1,7 @@
-import { useEffect } from "react";
-import { usePageContext } from "../contexts/PageContext";
+import useSetPageTitle from "../hooks/useSetPageTitle";
 
 const Homepage = () => {
-    const page = usePageContext();
-
-    useEffect(() => {
-        page.setPageName("Homepage");
-    }, [page]);
+    useSetPageTitle("Homepage");
 
     return (
         <div className="my-6">
