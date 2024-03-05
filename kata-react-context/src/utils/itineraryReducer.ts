@@ -1,12 +1,12 @@
 export type itineraryItem = {
     id: number;
-    text: string | undefined;
+    text: string;
     done: boolean;
 };
 
 export type actionType = {
     type: string;
-    payload: Partial<itineraryItem>;
+    payload: itineraryItem;
 };
 
 let nextId = 2;

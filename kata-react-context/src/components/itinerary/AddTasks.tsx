@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useItineraryContext } from "../../contexts/ItineraryContext";
 
 const AddTasks = () => {
-    const [text, setText] = useState("");
+    const [text, setText] = useState<string>("");
     const context = useItineraryContext();
 
     return (
@@ -21,6 +21,8 @@ const AddTasks = () => {
                         type: "add",
                         payload: {
                             text: text,
+                            id: 0,
+                            done: false,
                         },
                     });
                 }}
