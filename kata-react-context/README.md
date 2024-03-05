@@ -23,5 +23,5 @@
 -   [ ] advanced routing with subviews
 -   [ ] libraries react ecosystem: React Hook Form, axios
 -   [ ] api call variations - abort, multiple at once, paginate, etc.
--   [ ] env variable and base urls.
+-   [x] env variable and base urls.
 -   [ ] testing, a11y, internationalization
