@@ -16,7 +16,7 @@ const ItineraryContext = createContext<itineraryContextType | undefined>(
     undefined,
 );
 
-const ItineraryContextProvider = ({ children }: componentGenericProps) => {
+const ItineraryContextProvider = ({ children }: ComponentGenericProps) => {
     const [itineraryTasks, itineraryDispatch] = useReducer<
         Reducer<itineraryItem[], actionType>
     >(itineraryReducer, itineraryInitialState);

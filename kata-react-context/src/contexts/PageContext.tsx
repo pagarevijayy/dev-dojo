@@ -10,7 +10,7 @@ const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export default function PageContextProvider({
     children,
-}: componentGenericProps) {
+}: ComponentGenericProps) {
     const [pageName, setPageName] = useState("");
 
     return (

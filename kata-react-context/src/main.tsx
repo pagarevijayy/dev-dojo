@@ -7,9 +7,9 @@ import "./index.css";
 import App from "./App.tsx";
 import About from "./pages/About";
 import Homepage from "./pages/Homepage";
-import PageContextProvider from "./contexts/PageContext.tsx";
 import QueryDemo from "./pages/QueryDemo.tsx";
 import ReducerDemo from "./pages/ReducerDemo.tsx";
+import CustomProvider from "./contexts/Provider.tsx";
 
 const router = createBrowserRouter([
     {
@@ -41,9 +41,9 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <PageContextProvider>
+            <CustomProvider>
                 <RouterProvider router={router} />
-            </PageContextProvider>
+            </CustomProvider>
         </QueryClientProvider>
     </React.StrictMode>,
 );

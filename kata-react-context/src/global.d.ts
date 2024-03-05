@@ -1,3 +1,3 @@
-type componentGenericProps = {
+interface ComponentGenericProps {
     children: React.ReactNode;
-};
+}
