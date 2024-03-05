@@ -1,17 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import useSetPageTitle from "../hooks/useSetPageTitle";
 import ErrorBoundary from "../components/ErrorBoundary";
+import { queryClient } from "../main";
 
 const baseURL = "http://localhost:3000";
 
-type userType = {
+type UserType = {
     id: number;
     name: string;
     email: string;
     number: string;
 };
 
-const UserTable = ({ users }: { users: userType[] }) => {
+const UserTable = ({ users }: { users: UserType[] }) => {
     return (
         <table
             id="users_table"
@@ -35,7 +36,7 @@ const UserTable = ({ users }: { users: userType[] }) => {
                 </tr>
             </thead>
             <tbody>
-                {users.map((user: userType) => {
+                {users.map((user: UserType) => {
                     return (
                         <tr
                             className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
@@ -53,9 +54,72 @@ const UserTable = ({ users }: { users: userType[] }) => {
     );
 };
 
-const fetchUsers = async (): Promise<userType[]> => {
+const fetchUsers = async (): Promise<UserType[]> => {
     const res = await fetch(`${baseURL}/users`);
     return await res.json();
+};
+
+const updateUser = async (userData: Partial<UserType>): Promise<UserType> => {
+    // Perform the mutation logic, e.g., make an API request to update the user
+    const response = await fetch(`${baseURL}/users/${userData.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(userData),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update user");
+    }
+
+    return response.json();
+};
+
+const EditUserForm = () => {
+    const { isPending, mutate, error, isError } = useMutation({
+        mutationFn: updateUser,
+        onSuccess: (result, context) => {
+            console.log("result context", result, context);
+            queryClient.refetchQueries({ queryKey: ["usersTable"] });
+        },
+    });
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const userData = Object.fromEntries(formData);
+        // console.log("userData", userData);
+        mutate(userData);
+    };
+
+    return (
+        <form className="my-2 space-x-2" onSubmit={handleSubmit}>
+            <h2 className="m-2">Edit User Data:</h2>
+            <label htmlFor="id">
+                <input
+                    className="primary-input"
+                    type="text"
+                    placeholder="id"
+                    name="id"
+                    id="id"
+                />
+            </label>
+            <label htmlFor="name">
+                <input
+                    className="primary-input"
+                    type="text"
+                    placeholder="name"
+                    name="name"
+                    id="name"
+                />
+            </label>
+            <button className="btn-primary" type="submit" disabled={isPending}>
+                {isPending ? "Saving..." : "Save"}
+            </button>
+            {isError && <div>Error: {error.message}</div>}
+        </form>
+    );
 };
 
 const QueryDemo = () => {
@@ -76,6 +140,7 @@ const QueryDemo = () => {
     return (
         <>
             <UserTable users={users}></UserTable>
+            <EditUserForm />
         </>
     );
 };
