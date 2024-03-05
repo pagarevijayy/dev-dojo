@@ -10,7 +10,7 @@ const Header = () => {
 
     return (
         <header className="flex justify-between mb-2">
-            <h1>{page.pageName}</h1>
+            <h1 className="font-bold">{page.pageName}</h1>
             <nav>
                 <ul className="flex gap-4">
                     <li>

@@ -13,6 +13,7 @@
 ##### Implement
 
 -   [x] standard hooks + custom hooks implementation
+-   [ ] render optimisations (understanding multiple prints - context)
 -   [ ] portal, modal, lazy loading & suspense
 -   [ ] RQ: mutations, advanced features and api exploration
 -   [ ] error boundaries

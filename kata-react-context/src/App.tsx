@@ -6,7 +6,7 @@ function App() {
     return (
         <div className="p-4">
             <Header />
-            <main className="container">
+            <main className="container text-gray-800">
                 <Outlet />
             </main>
         </div>
