@@ -10,7 +10,7 @@ const AddTasks = () => {
     return (
         <label className="space-x-2">
             <input
-                className="px-1 border rounded"
+                className="primary-input"
                 placeholder="Add task"
                 value={text}
                 onChange={(e) => setText(e.target.value)}

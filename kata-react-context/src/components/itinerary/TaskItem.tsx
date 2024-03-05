@@ -15,6 +15,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
         taskContent = (
             <>
                 <input
+                    className="primary-input"
                     value={task.text}
                     onChange={(e) => {
                         context.itineraryDispatch({
@@ -37,8 +38,12 @@ const TaskItem = ({ task }: TaskItemProps) => {
     } else {
         taskContent = (
             <>
-                {task.id}
-                {task.text}
+                <span>
+                    {task.text}
+                    <span className="text-gray-600 text-xs mx-1 align-super">
+                        ({task.id})
+                    </span>
+                </span>
                 <button
                     className="btn-primary"
                     onClick={() => setIsEditing(true)}
@@ -53,7 +58,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
         <li>
             <label className="space-x-2">
                 <input
-                    className="m-2"
+                    className="m-1"
                     type="checkbox"
                     checked={task.done}
                     onChange={(e) => {
