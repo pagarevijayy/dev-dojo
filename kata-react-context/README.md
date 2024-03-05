@@ -3,8 +3,7 @@
 ##### Project stack
 
 -   state: useContext + useReducers + useState
--   hooks + custom hooks implementation
--   data: react-query (with axios, fetch)
+-   data: react-query (with fetch api)
 
 ##### Constistent stack
 
@@ -13,14 +12,14 @@
 
 ##### Implement
 
--   [ ] testing, a11y
--   [ ] nested sub-routes with layout
--   [ ] dynamic routing, queryparams, auth-guard
--   [ ] lazy loading & suspense
--   [ ] portal
--   [ ] forms, timers
+-   [x] standard hooks + custom hooks implementation
+-   [ ] portal, modal, lazy loading & suspense
+-   [ ] RQ: mutations, advanced features and api exploration
 -   [ ] error boundaries
+-   [ ] update metadata (title) based on current page.
+-   [ ] forms, timers
+-   [ ] nested sub-routes with layout, dynamic routing, queryparams, auth-guard
 -   [ ] higher-order-components
 -   [ ] api call - abort, multiple at once, paginate, etc.
--   [ ] update metadata (title) based on current page.
--   [ ] env variable and base urls.
+-   [ ] axios, env variable and base urls.
+-   [ ] testing, a11y, internationalization

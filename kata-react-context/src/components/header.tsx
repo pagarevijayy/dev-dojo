@@ -31,6 +31,11 @@ const Header = () => {
                             Query
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to={"/reducer"} className={highlightNavLink}>
+                            Reducer
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>

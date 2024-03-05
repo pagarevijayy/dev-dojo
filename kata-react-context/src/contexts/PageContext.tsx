@@ -6,15 +6,11 @@ type PageContextType = {
     setPageName: React.Dispatch<React.SetStateAction<string>>;
 };
 
-type PageContextProviderProps = {
-    children: React.ReactNode;
-};
-
 const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export default function PageContextProvider({
     children,
-}: PageContextProviderProps) {
+}: componentGenericProps) {
     const [pageName, setPageName] = useState("");
 
     return (

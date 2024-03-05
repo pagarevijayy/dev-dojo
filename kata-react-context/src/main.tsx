@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Homepage from "./pages/Homepage";
 import PageContextProvider from "./contexts/PageContext.tsx";
 import QueryDemo from "./pages/QueryDemo.tsx";
+import ReducerDemo from "./pages/ReducerDemo.tsx";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: "react-query",
                 element: <QueryDemo />,
+            },
+            {
+                path: "reducer",
+                element: <ReducerDemo />,
             },
         ],
     },

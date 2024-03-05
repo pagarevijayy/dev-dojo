@@ -52,10 +52,9 @@ const UserTable = ({ users }: { users: userType[] }) => {
     );
 };
 
-const fetchUsers = async () => {
+const fetchUsers = async (): Promise<userType[]> => {
     const res = await fetch(`${baseURL}/users`);
-    const users = await res.json();
-    return users;
+    return await res.json();
 };
 
 const QueryDemo = () => {
