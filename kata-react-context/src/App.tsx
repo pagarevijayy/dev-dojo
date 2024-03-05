@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
@@ -7,7 +8,9 @@ function App() {
         <div className="p-4">
             <Header />
             <main className="container text-gray-800">
-                <Outlet />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Outlet />
+                </Suspense>
             </main>
         </div>
     );

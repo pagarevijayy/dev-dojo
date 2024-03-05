@@ -14,13 +14,13 @@
 
 -   [x] standard hooks + custom hooks implementation
 -   [x] understanding double renders in strict mode (reducer - must be pure function)
--   [ ] portal, modal, lazy loading & suspense
--   [ ] RQ: mutations, advanced features and api exploration
--   [ ] error boundaries
+-   [x] portal, modal
+-   [ ] lazy loading & suspense, error boundaries, higher-order-components
+-   [ ] RQ: mutations
+
 -   [ ] update metadata (title) based on current page.
--   [ ] forms, timers
+-   [ ] React Hook Form, timers
 -   [ ] nested sub-routes with layout, dynamic routing, queryparams, auth-guard
--   [ ] higher-order-components
 -   [ ] api call - abort, multiple at once, paginate, etc.
 -   [ ] axios, env variable and base urls.
 -   [ ] testing, a11y, internationalization
