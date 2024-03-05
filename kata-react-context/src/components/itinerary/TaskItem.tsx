@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { itineraryItem } from "../../utils/itineraryReducer";
+import { useItineraryContext } from "../../contexts/ItineraryContext";
 
 interface TaskItemProps extends Partial<ComponentGenericProps> {
     task: itineraryItem;
@@ -7,6 +8,7 @@ interface TaskItemProps extends Partial<ComponentGenericProps> {
 
 const TaskItem = ({ task }: TaskItemProps) => {
     const [isEditing, setIsEditing] = useState(false);
+    const context = useItineraryContext();
 
     let taskContent;
     if (isEditing) {
@@ -14,14 +16,14 @@ const TaskItem = ({ task }: TaskItemProps) => {
             <>
                 <input
                     value={task.text}
-                    onChange={() => {
-                        //   dispatch({
-                        //       type: "changed",
-                        //       task: {
-                        //           ...task,
-                        //           text: e.target.value,
-                        //       },
-                        //   });
+                    onChange={(e) => {
+                        context.itineraryDispatch({
+                            type: "update",
+                            payload: {
+                                ...task,
+                                text: e.target.value,
+                            },
+                        });
                     }}
                 />
                 <button
@@ -54,24 +56,24 @@ const TaskItem = ({ task }: TaskItemProps) => {
                     className="m-2"
                     type="checkbox"
                     checked={task.done}
-                    onChange={() => {
-                        // dispatch({
-                        //     type: "changed",
-                        //     task: {
-                        //         ...task,
-                        //         done: e.target.checked,
-                        //     },
-                        // });
+                    onChange={(e) => {
+                        context.itineraryDispatch({
+                            type: "update",
+                            payload: {
+                                ...task,
+                                done: e.target.checked,
+                            },
+                        });
                     }}
                 />
                 {taskContent}
                 <button
                     className="btn-primary"
                     onClick={() => {
-                        // dispatch({
-                        //     type: "deleted",
-                        //     id: task.id,
-                        // });
+                        context.itineraryDispatch({
+                            type: "remove",
+                            payload: task,
+                        });
                     }}
                 >
                     Delete

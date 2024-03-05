@@ -32,6 +32,20 @@ export const itineraryReducer = (tasks: itineraryItem[], action: actionType) => 
             ];
         }
 
+        case "remove": {
+            return tasks.filter(t => t.id !== action.payload.id);
+        }
+
+        case "update": {
+            return tasks.map(t => {
+                if (t.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return t;
+                }
+            });
+        }
+
         default:
             throw new Error("Unknown action: " + action.type);
     }
