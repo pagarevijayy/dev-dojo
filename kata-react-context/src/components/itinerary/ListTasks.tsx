@@ -1,4 +1,5 @@
 import { ItineraryItem } from "../../utils/itineraryReducer";
+import withBorder from "../withBorder";
 import TaskItem from "./TaskItem";
 
 interface ListTasksProps extends Partial<ComponentGenericProps> {
@@ -21,4 +22,7 @@ const ListTasks = ({ taskList, showItemSettingsActions }: ListTasksProps) => {
         </ol>
     );
 };
+
+export const ListTasksWithBorder = withBorder(ListTasks);
+
 export default ListTasks;

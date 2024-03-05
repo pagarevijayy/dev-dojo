@@ -15,7 +15,7 @@
 -   [x] standard hooks + custom hooks implementation
 -   [x] understanding double renders in strict mode (reducer - must be pure function)
 -   [x] portal, modal
--   [ ] lazy loading & suspense, error boundaries, higher-order-components
+-   [x] lazy loading & suspense, error boundaries, higher-order-components
 -   [ ] RQ: mutations
 
 -   [ ] update metadata (title) based on current page.

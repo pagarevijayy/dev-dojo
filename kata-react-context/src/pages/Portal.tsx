@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { usePageContext } from "../contexts/PageContext";
-import ListTasks from "../components/itinerary/ListTasks";
+import { ListTasksWithBorder } from "../components/itinerary/ListTasks";
 import { useItineraryContext } from "../contexts/ItineraryContext";
 import Modal from "../components/layouts/Modal";
 
@@ -35,8 +35,8 @@ const Portal = () => {
             </p>
 
             <section>
-                <h2 className="font-bold">Next trip itinerary:</h2>
-                <ListTasks
+                <h2 className="font-bold mb-2">Next trip itinerary:</h2>
+                <ListTasksWithBorder
                     showItemSettingsActions={false}
                     taskList={context.itineraryTasks}
                 />
