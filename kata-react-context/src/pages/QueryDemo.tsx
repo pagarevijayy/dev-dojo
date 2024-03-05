@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useSetPageTitle from "../hooks/useSetPageTitle";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const baseURL = "http://localhost:3000";
 
@@ -79,4 +80,12 @@ const QueryDemo = () => {
     );
 };
 
-export default QueryDemo;
+const QueryDemoErrorBoundary = () => {
+    return (
+        <ErrorBoundary>
+            <QueryDemo />
+        </ErrorBoundary>
+    );
+};
+
+export default QueryDemoErrorBoundary;

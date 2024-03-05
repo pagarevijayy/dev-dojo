@@ -2,6 +2,7 @@ import useSetPageTitle from "../hooks/useSetPageTitle";
 import { useItineraryContext } from "../contexts/ItineraryContext";
 import ListTasks from "../components/itinerary/ListTasks";
 import AddTasks from "../components/itinerary/AddTasks";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const ReducerDemo = () => {
     useSetPageTitle("Reducer");
@@ -17,4 +18,13 @@ const ReducerDemo = () => {
         </div>
     );
 };
-export default ReducerDemo;
+
+const ReducerDemoErrorBoundary = () => {
+    return (
+        <ErrorBoundary>
+            <ReducerDemo />
+        </ErrorBoundary>
+    );
+};
+
+export default ReducerDemoErrorBoundary;
