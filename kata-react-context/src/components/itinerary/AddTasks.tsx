@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useItineraryContext } from "../../contexts/ItineraryContext";
 
+let nextId = 2;
+
 const AddTasks = () => {
     const [text, setText] = useState<string>("");
     const context = useItineraryContext();
@@ -21,7 +23,7 @@ const AddTasks = () => {
                         type: "add",
                         payload: {
                             text: text,
-                            id: 0,
+                            id: nextId++,
                             done: false,
                         },
                     });

@@ -9,8 +9,6 @@ export type ActionType = {
     payload: ItineraryItem;
 };
 
-let nextId = 2;
-
 export const itineraryInitialState: ItineraryItem[] = [
     {
         id: 1,
@@ -25,7 +23,7 @@ export const itineraryReducer = (tasks: ItineraryItem[], action: ActionType) => 
             return [
                 ...tasks,
                 {
-                    id: nextId++,
+                    id: action.payload.id,
                     text: action.payload.text,
                     done: false,
                 },
