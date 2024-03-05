@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "./index.css";
 import App from "./App.tsx";
-import About from "./pages/About";
+import Portal from "./pages/Portal.tsx";
 import Homepage from "./pages/Homepage";
 import QueryDemo from "./pages/QueryDemo.tsx";
 import ReducerDemo from "./pages/ReducerDemo.tsx";
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
                 element: <Homepage />,
             },
             {
-                path: "about",
-                element: <About />,
+                path: "portal",
+                element: <Portal />,
             },
             {
                 path: "react-query",
