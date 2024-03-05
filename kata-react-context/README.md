@@ -16,11 +16,12 @@
 -   [x] understanding double renders in strict mode (reducer - must be pure function)
 -   [x] portal, modal
 -   [x] lazy loading & suspense, error boundaries, higher-order-components
--   [ ] RQ: mutations
+-   [x] RQ: mutations, basic forms
 
--   [ ] update metadata (title) based on current page.
--   [ ] React Hook Form, timers
--   [ ] nested sub-routes with layout, dynamic routing, queryparams, auth-guard
--   [ ] api call - abort, multiple at once, paginate, etc.
--   [ ] axios, env variable and base urls.
+-   [ ] dynamic page title (metadata), timers
+-   [ ] useParams/useSearchParams, auth-guard
+-   [ ] advanced routing with subviews
+-   [ ] libraries react ecosystem: React Hook Form, axios
+-   [ ] api call variations - abort, multiple at once, paginate, etc.
+-   [ ] env variable and base urls.
 -   [ ] testing, a11y, internationalization
