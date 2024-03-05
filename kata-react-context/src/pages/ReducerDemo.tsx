@@ -10,7 +10,10 @@ const ReducerDemo = () => {
         <div className="space-y-2">
             <h2 className="text-lg mb-4">Itinerary Planner</h2>
             <AddTasks />
-            <ListTasks taskList={context.itineraryTasks} />
+            <ListTasks
+                showItemSettingsActions={true}
+                taskList={context.itineraryTasks}
+            />
         </div>
     );
 };

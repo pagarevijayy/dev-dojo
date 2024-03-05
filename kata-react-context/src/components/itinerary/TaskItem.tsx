@@ -4,9 +4,10 @@ import { useItineraryContext } from "../../contexts/ItineraryContext";
 
 interface TaskItemProps extends Partial<ComponentGenericProps> {
     task: ItineraryItem;
+    showItemSettingsActions: boolean;
 }
 
-const TaskItem = ({ task }: TaskItemProps) => {
+const TaskItem = ({ task, showItemSettingsActions = false }: TaskItemProps) => {
     const [isEditing, setIsEditing] = useState(false);
     const context = useItineraryContext();
 
@@ -44,12 +45,14 @@ const TaskItem = ({ task }: TaskItemProps) => {
                         ({task.id})
                     </span>
                 </span>
-                <button
-                    className="btn-primary"
-                    onClick={() => setIsEditing(true)}
-                >
-                    Edit
-                </button>
+                {showItemSettingsActions && (
+                    <button
+                        className="btn-primary"
+                        onClick={() => setIsEditing(true)}
+                    >
+                        Edit
+                    </button>
+                )}
             </>
         );
     }
@@ -72,17 +75,20 @@ const TaskItem = ({ task }: TaskItemProps) => {
                     }}
                 />
                 {taskContent}
-                <button
-                    className="btn-primary"
-                    onClick={() => {
-                        context.itineraryDispatch({
-                            type: "remove",
-                            payload: task,
-                        });
-                    }}
-                >
-                    Delete
-                </button>
+
+                {showItemSettingsActions && (
+                    <button
+                        className="btn-primary"
+                        onClick={() => {
+                            context.itineraryDispatch({
+                                type: "remove",
+                                payload: task,
+                            });
+                        }}
+                    >
+                        Delete
+                    </button>
+                )}
             </label>
         </li>
     );

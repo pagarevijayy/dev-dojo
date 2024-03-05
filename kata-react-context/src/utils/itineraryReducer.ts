@@ -12,7 +12,7 @@ export type ActionType = {
 export const itineraryInitialState: ItineraryItem[] = [
     {
         id: 1,
-        text: "Check wallet and id proofs",
+        text: "Check wallet",
         done: false,
     },
 ];
