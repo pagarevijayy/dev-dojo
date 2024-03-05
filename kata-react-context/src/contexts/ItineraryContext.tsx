@@ -1,15 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { Reducer, createContext, useContext, useReducer } from "react";
 import {
-    actionType,
+    ActionType,
     itineraryInitialState,
-    itineraryItem,
+    ItineraryItem,
     itineraryReducer,
 } from "../utils/itineraryReducer";
 
 type itineraryContextType = {
-    itineraryTasks: itineraryItem[];
-    itineraryDispatch: React.Dispatch<actionType>;
+    itineraryTasks: ItineraryItem[];
+    itineraryDispatch: React.Dispatch<ActionType>;
 };
 
 const ItineraryContext = createContext<itineraryContextType | undefined>(
@@ -18,7 +18,7 @@ const ItineraryContext = createContext<itineraryContextType | undefined>(
 
 const ItineraryContextProvider = ({ children }: ComponentGenericProps) => {
     const [itineraryTasks, itineraryDispatch] = useReducer<
-        Reducer<itineraryItem[], actionType>
+        Reducer<ItineraryItem[], ActionType>
     >(itineraryReducer, itineraryInitialState);
 
     return (

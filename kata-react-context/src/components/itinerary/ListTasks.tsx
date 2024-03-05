@@ -1,14 +1,14 @@
-import { itineraryItem } from "../../utils/itineraryReducer";
+import { ItineraryItem } from "../../utils/itineraryReducer";
 import TaskItem from "./TaskItem";
 
 interface ListTasksProps extends Partial<ComponentGenericProps> {
-    taskList: itineraryItem[];
+    taskList: ItineraryItem[];
 }
 
 const ListTasks = ({ taskList }: ListTasksProps) => {
     return (
         <ol>
-            {taskList.map((task: itineraryItem) => {
+            {taskList.map((task: ItineraryItem) => {
                 return <TaskItem task={task} key={task.id} />;
             })}
         </ol>

@@ -1,17 +1,17 @@
-export type itineraryItem = {
+export type ItineraryItem = {
     id: number;
     text: string;
     done: boolean;
 };
 
-export type actionType = {
+export type ActionType = {
     type: string;
-    payload: itineraryItem;
+    payload: ItineraryItem;
 };
 
 let nextId = 2;
 
-export const itineraryInitialState: itineraryItem[] = [
+export const itineraryInitialState: ItineraryItem[] = [
     {
         id: 1,
         text: "Check wallet and id proofs",
@@ -19,7 +19,7 @@ export const itineraryInitialState: itineraryItem[] = [
     },
 ];
 
-export const itineraryReducer = (tasks: itineraryItem[], action: actionType) => {
+export const itineraryReducer = (tasks: ItineraryItem[], action: ActionType) => {
     switch (action.type) {
         case "add": {
             return [

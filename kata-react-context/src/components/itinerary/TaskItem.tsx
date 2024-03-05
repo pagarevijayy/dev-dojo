@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { itineraryItem } from "../../utils/itineraryReducer";
+import { ItineraryItem } from "../../utils/itineraryReducer";
 import { useItineraryContext } from "../../contexts/ItineraryContext";
 
 interface TaskItemProps extends Partial<ComponentGenericProps> {
-    task: itineraryItem;
+    task: ItineraryItem;
 }
 
 const TaskItem = ({ task }: TaskItemProps) => {
