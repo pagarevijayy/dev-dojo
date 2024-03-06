@@ -1,50 +1,64 @@
-// const EditUserForm = () => {
-//     const { isPending, mutate, error, isError } = useMutation({
-//         mutationFn: updateUser,
-//         onSuccess: (result, context) => {
-//             console.log("result context", result, context);
-//             queryClient.refetchQueries({ queryKey: ["usersTable"] });
-//         },
-//     });
+import {
+    UserType,
+    useGetUsersQuery,
+    useAddUserMutation,
+} from "../../services/api/users";
 
-//     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-//         event.preventDefault();
-//         const formData = new FormData(event.currentTarget);
-//         const userData = Object.fromEntries(formData);
-//         // console.log("userData", userData);
-//         mutate(userData);
-//     };
+const AddUserForm = () => {
+    const [addUser, { isLoading }] = useAddUserMutation();
 
-//     return (
-//         <form className="my-2 space-x-2" onSubmit={handleSubmit}>
-//             <h2 className="m-2">Edit User Data:</h2>
-//             <label htmlFor="id">
-//                 <input
-//                     className="primary-input"
-//                     type="text"
-//                     placeholder="id"
-//                     name="id"
-//                     id="id"
-//                 />
-//             </label>
-//             <label htmlFor="name">
-//                 <input
-//                     className="primary-input"
-//                     type="text"
-//                     placeholder="name"
-//                     name="name"
-//                     id="name"
-//                 />
-//             </label>
-//             <button className="btn-primary" type="submit" disabled={isPending}>
-//                 {isPending ? "Saving..." : "Save"}
-//             </button>
-//             {isError && <div>Error: {error.message}</div>}
-//         </form>
-//     );
-// };
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const userData = Object.fromEntries(formData);
+        // console.log("userData", userData);
+        addUser(userData);
+    };
 
-import { UserType, useGetUsersQuery } from "../../services/api/users";
+    return (
+        <form className="my-2 space-x-2" onSubmit={handleSubmit}>
+            <h2 className="m-2">Add User:</h2>
+            <label htmlFor="name">
+                <input
+                    className="primary-input"
+                    type="text"
+                    placeholder="name"
+                    name="name"
+                    id="name"
+                    required
+                />
+            </label>
+            <label htmlFor="email">
+                <input
+                    className="primary-input"
+                    type="email"
+                    placeholder="email"
+                    name="email"
+                    id="email"
+                    required
+                />
+            </label>
+            <label htmlFor="number">
+                <input
+                    className="primary-input"
+                    type="number"
+                    placeholder="number"
+                    name="number"
+                    id="number"
+                    maxLength={10}
+                    required
+                />
+            </label>
+            <button
+                className="btn-primary bg-gradient-to-br from-purple-600 to-blue-500"
+                type="submit"
+                disabled={isLoading}
+            >
+                {isLoading ? "Saving..." : "Save"}
+            </button>
+        </form>
+    );
+};
 
 const UserTable = ({ users }: { users: UserType[] | undefined }) => {
     return (
@@ -111,6 +125,7 @@ const UsersDemo = () => {
         <div className="space-y-4 p-4 border rounded">
             <p>Users RTK Demo:</p>
             <ListUsers />
+            <AddUserForm />
         </div>
     );
 };
