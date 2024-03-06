@@ -2,7 +2,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
-import Counter from "./pages/Counter";
+import ReduxDemo from "./pages/ReduxDemo";
 
 const Layout = () => {
     return (
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
                 element: <Homepage />,
             },
             {
-                path: "counter",
-                element: <Counter />,
+                path: "redux",
+                element: <ReduxDemo />,
             },
         ],
     },

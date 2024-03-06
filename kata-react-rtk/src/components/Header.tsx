@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
-
     const highlightNavLink = ({ isActive }: { isActive: boolean }) => {
         return isActive ? "text-blue-500" : "";
     };
@@ -9,7 +8,7 @@ const Header = () => {
     return (
         <header className="flex justify-between mb-2">
             <h1 className="font-bold">
-             <Link to="/"> React RTK</Link>
+                <Link to="/"> React RTK</Link>
             </h1>
             <nav>
                 <ul className="flex gap-4">
@@ -19,11 +18,10 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/counter"} className={highlightNavLink}>
-                            Counter
+                        <NavLink to={"/redux"} className={highlightNavLink}>
+                            Redux
                         </NavLink>
                     </li>
-
                 </ul>
             </nav>
         </header>

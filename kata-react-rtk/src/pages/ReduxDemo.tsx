@@ -7,7 +7,7 @@ import {
 } from "../state/counter/counterSlice";
 import { currentShow } from "../state/watching/watchingSlice";
 
-export default function Counter() {
+export default function ReduxDemo() {
     const count = useSelector((state: RootState) => state.counter.value);
     const dispatch = useDispatch();
 
