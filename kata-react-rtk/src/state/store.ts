@@ -4,15 +4,17 @@ import watchingReducer from './watching/watchingSlice'
 
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { pokemonApi } from '../services/api/pokemon'
+import { usersApi } from '../services/api/users'
 
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
         watching: watchingReducer,
         [pokemonApi.reducerPath]: pokemonApi.reducer,
+        [usersApi.reducerPath]: usersApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(pokemonApi.middleware),
+        getDefaultMiddleware().concat([pokemonApi.middleware, usersApi.middleware]),
 })
 
 setupListeners(store.dispatch)
