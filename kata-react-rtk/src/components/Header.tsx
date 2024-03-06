@@ -22,6 +22,11 @@ const Header = () => {
                             Redux
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to={"/rtk-query"} className={highlightNavLink}>
+                            RTK Query
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>

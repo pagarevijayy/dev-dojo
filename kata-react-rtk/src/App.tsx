@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
 import ReduxDemo from "./pages/ReduxDemo";
+import RTKQueryDemo from "./pages/RTKQueryDemo";
 
 const Layout = () => {
     return (
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: "redux",
                 element: <ReduxDemo />,
+            },
+            {
+                path: "rtk-query",
+                element: <RTKQueryDemo />,
             },
         ],
     },
