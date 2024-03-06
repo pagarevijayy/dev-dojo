@@ -1,14 +1,42 @@
-import './App.css'
+import "./App.css";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import Homepage from "./pages/Homepage";
+import Counter from "./pages/Counter";
+
+const Layout = () => {
+    return (
+        <>
+            <Header />
+            <main>
+                <Outlet />
+            </main>
+        </>
+    );
+};
+
+const router = createBrowserRouter([
+    {
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                element: <Homepage />,
+            },
+            {
+                path: "counter",
+                element: <Counter />,
+            },
+        ],
+    },
+]);
 
 function App() {
-
-  return (
-    <>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </>
-  )
+    return (
+        <div className="p-3">
+            <RouterProvider router={router} />
+        </div>
+    );
 }
 
-export default App
+export default App;
