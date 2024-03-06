@@ -15,7 +15,9 @@ const AddUserForm = () => {
         addUser(userData);
     };
 
-    return (
+    return isLoading ? (
+        <p className="text-center my-2">adding user..</p>
+    ) : (
         <form className="my-2 space-x-2" onSubmit={handleSubmit}>
             <h2 className="m-2">Add User:</h2>
             <label htmlFor="name">
@@ -52,9 +54,8 @@ const AddUserForm = () => {
             <button
                 className="btn-primary bg-gradient-to-br from-purple-600 to-blue-500"
                 type="submit"
-                disabled={isLoading}
             >
-                {isLoading ? "Saving..." : "Save"}
+                Save
             </button>
         </form>
     );
