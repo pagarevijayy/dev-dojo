@@ -10,25 +10,6 @@ const {
     GraphQLNonNull,
 } = graphql;
 
-// const CompanyType = new GraphQLObjectType({
-//     name: "Company",
-//     fields: () => ({
-//         id: { type: GraphQLString },
-//         name: { type: GraphQLString },
-//         description: { type: GraphQLString },
-//         users: {
-//             type: new GraphQLList(UserType),
-//             resolve(parentValue, args) {
-//                 return axios
-//                     .get(
-//                         `http://localhost:3000/companies/${parentValue.id}/users`,
-//                     )
-//                     .then((res) => res.data);
-//             },
-//         },
-//     }),
-// });
-
 const UserType = new GraphQLObjectType({
     name: "User",
     fields: () => ({
@@ -36,18 +17,6 @@ const UserType = new GraphQLObjectType({
         name: { type: GraphQLString },
         email: { type: GraphQLString },
         number: { type: GraphQLString },
-        // age: { type: GraphQLInt },
-        // company: {
-        //     type: CompanyType,
-        //     resolve(parentValue, args) {
-        //         console.log("args", parentValue, args);
-        //         return axios
-        //             .get(
-        //                 `http://localhost:3000/companies/${parentValue?.companyId}`,
-        //             )
-        //             .then((res) => res.data);
-        //     },
-        // },
     }),
 });
 
@@ -73,15 +42,6 @@ const RootQuery = new GraphQLObjectType({
                     .then((res) => res.data);
             },
         },
-        // company: {
-        //     type: CompanyType,
-        //     args: { id: { type: GraphQLString } },
-        //     resolve(parentValue, args) {
-        //         return axios
-        //             .get(`http://localhost:3000/companies/${args.id}`)
-        //             .then((res) => res.data);
-        //     },
-        // },
     },
 });
 
@@ -139,3 +99,50 @@ const Mutation = new GraphQLObjectType({
 });
 
 export const schema = new GraphQLSchema({ query: RootQuery, mutation: Mutation });
+
+/*
+Playground Queries:
+
+query users {
+  users{
+    id,
+    name,
+    email
+  }
+}
+
+
+query users {
+  users(id: "3"){
+    id,
+    name,
+    email
+  }
+}
+
+mutation {
+  deleteUser(id: "a374"){
+    id,
+    name,
+    email
+  }
+}
+
+mutation {
+  editUser(id: "8d47", name: "Vishal Yadav", email:"vishal@gmail.com"){
+    id,
+    name,
+    email
+  }
+}
+
+mutation {
+  addUser( name: "Manpreet Singh", email:"mannu@gmail.com", number:"8882384324"){
+    id,
+    name,
+    email
+  }
+}
+
+
+*/
