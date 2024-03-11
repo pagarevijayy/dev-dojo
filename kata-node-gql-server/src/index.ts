@@ -1,10 +1,9 @@
 import express from "express";
 import { createHandler } from "graphql-http/lib/use/express"
-import schema from "./schema";
-const app = express();
-const expressPlayground = require('graphql-playground-middleware-express')
-    .default
+import graphqlPlaygroundHtml from "graphql-playground-html";
+import { schema } from "./schema.js";
 
+const app = express();
 
 app.use(
     "/graphql",
@@ -13,8 +12,20 @@ app.use(
     }),
 );
 
-app.get('/playground', expressPlayground({ endpoint: '/graphql' }));
+// gql playground
+const graphqlPlayground = function (
+    options: graphqlPlaygroundHtml.MiddlewareOptions
+) {
+    return function (req, res, next) {
+        res.setHeader("Content-Type", "text/html");
+        const playground = graphqlPlaygroundHtml.renderPlaygroundPage(options);
+        res.write(playground);
+        res.end();
+    };
+};
+
+app.get('/playground', graphqlPlayground({ endpoint: '/graphql' }));
 
 app.listen(4000, () => {
-    console.log("listening...");
+    console.log("listening on port 4000...");
 });

@@ -10,48 +10,59 @@ const {
     GraphQLNonNull,
 } = graphql;
 
-const CompanyType = new GraphQLObjectType({
-    name: "Company",
-    fields: () => ({
-        id: { type: GraphQLString },
-        name: { type: GraphQLString },
-        description: { type: GraphQLString },
-        users: {
-            type: new GraphQLList(UserType),
-            resolve(parentValue, args) {
-                return axios
-                    .get(
-                        `http://localhost:3000/companies/${parentValue.id}/users`,
-                    )
-                    .then((res) => res.data);
-            },
-        },
-    }),
-});
+// const CompanyType = new GraphQLObjectType({
+//     name: "Company",
+//     fields: () => ({
+//         id: { type: GraphQLString },
+//         name: { type: GraphQLString },
+//         description: { type: GraphQLString },
+//         users: {
+//             type: new GraphQLList(UserType),
+//             resolve(parentValue, args) {
+//                 return axios
+//                     .get(
+//                         `http://localhost:3000/companies/${parentValue.id}/users`,
+//                     )
+//                     .then((res) => res.data);
+//             },
+//         },
+//     }),
+// });
 
 const UserType = new GraphQLObjectType({
     name: "User",
     fields: () => ({
         id: { type: GraphQLString },
-        firstName: { type: GraphQLString },
-        age: { type: GraphQLInt },
-        company: {
-            type: CompanyType,
-            resolve(parentValue, args) {
-                console.log("args", parentValue, args);
-                return axios
-                    .get(
-                        `http://localhost:3000/companies/${parentValue?.companyId}`,
-                    )
-                    .then((res) => res.data);
-            },
-        },
+        name: { type: GraphQLString },
+        email: { type: GraphQLString },
+        number: { type: GraphQLString },
+        // age: { type: GraphQLInt },
+        // company: {
+        //     type: CompanyType,
+        //     resolve(parentValue, args) {
+        //         console.log("args", parentValue, args);
+        //         return axios
+        //             .get(
+        //                 `http://localhost:3000/companies/${parentValue?.companyId}`,
+        //             )
+        //             .then((res) => res.data);
+        //     },
+        // },
     }),
 });
 
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
+        users: {
+            type: new GraphQLList(UserType),
+            resolve(parentValue, args) {
+                // resolve has the logic to return data - can be from db, third-party/external server
+                return axios
+                    .get(`http://localhost:3000/users`)
+                    .then((res) => res.data);
+            },
+        },
         user: {
             type: UserType,
             args: { id: { type: GraphQLString } },
@@ -62,15 +73,15 @@ const RootQuery = new GraphQLObjectType({
                     .then((res) => res.data);
             },
         },
-        company: {
-            type: CompanyType,
-            args: { id: { type: GraphQLString } },
-            resolve(parentValue, args) {
-                return axios
-                    .get(`http://localhost:3000/companies/${args.id}`)
-                    .then((res) => res.data);
-            },
-        },
+        // company: {
+        //     type: CompanyType,
+        //     args: { id: { type: GraphQLString } },
+        //     resolve(parentValue, args) {
+        //         return axios
+        //             .get(`http://localhost:3000/companies/${args.id}`)
+        //             .then((res) => res.data);
+        //     },
+        // },
     },
 });
 
@@ -80,15 +91,17 @@ const Mutation = new GraphQLObjectType({
         addUser: {
             type: UserType,
             args: {
-                firstName: { type: new GraphQLNonNull(GraphQLString) },
-                age: { type: new GraphQLNonNull(GraphQLInt) },
-                companyId: { type: GraphQLString },
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                email: { type: new GraphQLNonNull(GraphQLString) },
+                number: { type: new GraphQLNonNull(GraphQLString) },
+                // age: { type: new GraphQLNonNull(GraphQLInt) },
             },
-            resolve(parentValue, { firstName, age }) {
+            resolve(parentValue, { name, email, number }) {
                 return axios
                     .post(`http://localhost:3000/users`, {
-                        firstName,
-                        age,
+                        name,
+                        email,
+                        number
                     })
                     .then((res) => res.data);
             },
@@ -108,16 +121,16 @@ const Mutation = new GraphQLObjectType({
             type: UserType,
             args: {
                 id: { type: new GraphQLNonNull(GraphQLString) },
-                firstName: { type: GraphQLString },
-                age: { type: GraphQLInt },
-                companyId: { type: GraphQLString },
+                name: { type: GraphQLString },
+                email: { type: GraphQLString },
+                number: { type: GraphQLString },
             },
-            resolve(parentValue, { id, firstName, age, companyId }) {
+            resolve(parentValue, { id, name, email, number }) {
                 return axios
                     .patch(`http://localhost:3000/users/${id}`, {
-                        firstName,
-                        age,
-                        companyId,
+                        name,
+                        email,
+                        number
                     })
                     .then((res) => res.data);
             },
@@ -125,6 +138,4 @@ const Mutation = new GraphQLObjectType({
     },
 });
 
-const schema = new GraphQLSchema({ query: RootQuery, mutation: Mutation });
-
-export default schema;
+export const schema = new GraphQLSchema({ query: RootQuery, mutation: Mutation });
