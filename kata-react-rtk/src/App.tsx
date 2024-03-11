@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
 import ReduxDemo from "./pages/ReduxDemo";
 import RTKQueryDemo from "./pages/RTKQueryDemo";
+import GraphQLDemo from "./pages/GraphQL";
 
 const Layout = () => {
     return (
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "rtk-query",
                 element: <RTKQueryDemo />,
+            },
+            {
+                path: "graphql",
+                element: <GraphQLDemo />,
             },
         ],
     },

@@ -14,3 +14,4 @@
 -   [x] Multiple reducers
 -   [x] RTK query (get and post)
 -   [ ] graphql (query & mutation)
+-   [ ] advanced CSS/tailwind

@@ -27,6 +27,11 @@ const Header = () => {
                             RTK Query
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to={"/graphql"} className={highlightNavLink}>
+                            Graphql
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>
