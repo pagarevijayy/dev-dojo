@@ -1,0 +1,26 @@
+{
+    "name": "gql-server",
+    "version": "1.0.0",
+    "description": "graphql server",
+    "main": "src/index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "compile": "tsc",
+        "start": "npm run compile && node ./dist/index.js"
+    },
+    "author": "pagarevijayy",
+    "license": "ISC",
+    "type": "module",
+    "dependencies": {
+        "axios": "^1.6.7",
+        "express": "^4.18.3",
+        "graphql": "^16.8.1",
+        "graphql-http": "^1.22.0",
+        "graphql-playground-middleware-express": "^1.7.23"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.25",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.2"
+    }
+}
